@@ -1,0 +1,69 @@
+#IDInput{
+	outline : none;
+	border : none;
+	color : #7D4426;
+	background : transparent;
+	font-family : "Gugi";
+	font-size : 3.5vh;
+}
+
+#PWInput{
+	outline : none;
+	border : none;
+	color : #7D4426;
+	background : transparent;
+	font-family : "Gugi";
+	font-size : 3.5vh;
+}
+
+#LoginBtn{
+	outline:none;
+	border: none;
+	background : transparent;
+	color : #F8F2E6;
+	font-family : "Gugi";
+	font-size: 4vh;
+	cursor:pointer;
+}
+
+#AddInfoBtn{
+	outline:none;
+	border: none;
+	background : transparent;
+	color : #F8F2E6;
+	font-family : "Gugi";
+	font-size: 4vh;
+	cursor:pointer;
+}
+
+#ChatLog{
+	outline:none;
+	border:none;
+	background:white;
+	font-weight:bolder;
+	color:black;
+	overflow:hidden
+}
+	
+#ChatTextBox {
+	outline:none;
+	border:none;
+	background:white;
+	font-weight:bold;
+	font-size: 10vh;
+	color:black;
+	overflow:hidden
+}
+	
+#Peerlist {
+	outline:none;
+	border:none;
+	background:white;
+	color:black;
+	overflow:hidden
+}
+
+#C {
+	text-align:center;
+	font-weight:bold;
+}

@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>ToasTooL</title>
+        <link rel="stylesheet" href="/stylesheets/styles.css" />
+        <link
+            rel="stylesheet"
+            href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/androidstudio.min.css"
+        />
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+        <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="editor">
+                <br />
+                <div id="editor"></div>
+            </div>
+        </div>
+        <div class="folderwrap">
+            <div class="foldertree" id="foldertree"></div>
+        </div>
+        <button class="ajaxsend ajaxsend--diagonal ajaxsend--orange" id="ajaxsend">Run</button>
+        <button class="save" id="save">Save</button>
+        <button class="plus" id="plus">+</button>
+        <textarea id="output" type="text" readonly style="resize: none;"></textarea>
+		<div class="modal hidden">
+		<div class="bg"></div>
+		<div class="modalBox">
+			<b>
+				새 파일 만들기
+			</b>
+			<button class="closeBtn">
+				х
+			</button>
+			<p>
+				파일 이름
+			</p>
+            <input type="text" id="filename" placeholder="확장자까지 입력해 주세요." autocomplete="off">
+			<button class="create" id="create">
+				확인
+			</button>
+			<button class="closeBtn" id="back">
+				취소
+			</button>
+		</div>
+	</div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
+        <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+        <!--socket.io 사이트의 client installation에서 cdn으로 받아오기를 복사함. 그리고 프로젝트의 앱 경로 : routes\package.json에 가보면 socket.io의 버전이 4.2.0이므로 script 내의 버전도 맞춰준다.-->
+        <script
+            src="https://cdn.socket.io/4.2.0/socket.io.min.js"
+            integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="javascripts/quill-cursors.js"></script>
+        <script src="javascripts/main.js"></script>
+    </body>
+</html>

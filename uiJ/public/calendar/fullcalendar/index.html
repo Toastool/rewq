@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>ToasTooL</title>
+        <link href="main.css" rel="stylesheet" />
+        <script src="main.js"></script>
+        <script src="ko.js"></script>
+        <script src="jquery.min.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+			var calendar = null;
+            var all_events = null;
+            
+            //우리에게 axios는 많이 일렀던 거지..^^
+            //근데 똑같을줄은 몰랐지..
+			async function loadingEvents(){      
+				const response = await axios.post('https://toastoolui.run.goorm.io/select', {
+			        ok : 'ok'
+			    });
+                return response.data;
+			}
+
+            document.addEventListener('DOMContentLoaded', function () {
+                var calendarEl = document.getElementById('calendar');
+                
+                //loadingEvents().then(value => console.log(value));
+                all_events = loadingEvents();
+                console.log(loadingEvents());	
+				
+                calendar = new FullCalendar.Calendar(calendarEl, {
+                    // timeZone: 'GMT+9',
+                    selectable: true,
+                    editable: true,
+                    dayManyEvent: true,
+					locale: 'ko',
+					events : all_events,
+                    headerToolbar: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'dayGridMonth',
+                    },
+
+                    select: function (info) {
+                        alert(info.startStr + ' 에서 ' + info.endStr + '까지 선택했습니다.');
+                        var dateStr = info.startStr;
+                        var date = new Date(dateStr); // will be in local time
+                        var nameStr = prompt('등록할 이벤트의 이름을 적으세요.');
+                        var name = new String(nameStr);
+                        console.log(name + '\n' + nameStr);
+                        if (name == 'null') {
+							alert('취소되었습니다.');
+                            console.log(name);
+                            return;
+                        }
+
+                        if (!isNaN(date.valueOf()) || !(name == 'null')) {
+                            // valid?
+                            calendar.addEvent({
+                                title: name,
+                                start: info.startStr,
+                                end: info.endStr,
+                                allDay: true,
+                            });
+                        } else {
+                            alert('잘못된 입력 입니다.');
+                        }
+                    },
+
+                    eventClick: function (info) {
+                        var delConfirm = confirm('이벤트를 삭제하시겠습니까?');
+                        var eventObj = info.event;
+                        if (delConfirm) {
+                            eventObj.remove();
+                            alert('삭제되었습니다.');
+                        }
+                        //alert('Clicked ' + eventObj.title);
+                        else {
+                            alert('취소되었습니다.');
+                        }
+                    },
+                });
+                calendar.render();
+            });
+            console.log(all_events);
+			//var token = $("input[name='_csrf']").val();
+			//var header = "X-CSRF-TOKEN";
+			
+			//1. 전체 이벤트 데이터 추출 2. ajax로 서버에 전송하여 DB에 저장
+			function allSave(){
+				var allEvent = calendar.getEvents();
+				var events = new Array();
+				for(var i=0; i<allEvent.length; i++){
+					var obj = new Object();
+					
+					obj.title = allEvent[i]._def.title; //이벤트 이름
+					obj.allday = allEvent[i]._def.allDay; //종일 이벤트인지 알려주는 boolean값
+					obj.start = allEvent[i]._instance.range.start; //이벤트 시작 날짜
+					obj.end = allEvent[i]._instance.range.end; //이벤트 종료 날짜
+					
+					events.push(obj);
+				}
+				var jsondata = JSON.stringify(events);
+				console.log(jsondata);
+				savedata(jsondata);
+			}
+        
+			
+			function savedata(jsondata){  
+				$.ajax({
+					type: 'POST',
+					url: 'https://toastoolui.run.goorm.io/save',
+					data:{'alldata' : jsondata},
+					dataType:'text',
+					//async:false,
+					// beforeSend : function(xhr)
+					// {
+					// 	xhr.setRequestHeader(header, token);
+					// }
+				})
+				.done(function(result){
+					alert("저장 되었습니다.");
+				})
+				.fail(function(request, status, error){
+					alert("에러: "+ error);
+				});
+                
+                // //ajax 말고 axios로 보내보자
+                // axios({
+                //     method:"POST",
+                //     url: 'https://toastoolcalendar.run.goorm.io/save',
+                //     data:{
+                //         'alldata' : jsondata
+                //     }
+                // }).then((res)=>{
+                //     console.log(res);
+                // }).catch(error=>{
+                //     console.log(error);
+                // });
+                
+                // axios.post('/save', {
+                //     //stringify했으니까 + 서버에서 parse할거라
+                //     'alldata' : jsondata
+                // }).then(function (response) {
+                // console.log(response);
+                // }).catch(function (error) {
+                // console.log(error);
+                // });     
+			}
+        </script>
+
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                font-family: 'Gugi', cursive;
+                font-size: 10px;
+            }
+
+            #calendar {
+                height: 99vh;
+                width: 97%;
+                background-color: #f8f2e6;
+            }
+			
+			#save{
+	    		position: absolute;
+    			top: 4%;
+    			left: 43%;
+    			width: 12vw;
+    			height: 4.1551246537396125vh;
+    			background: #BD7441;
+    			border-radius: 21px;
+    			color: #F8F2E6;
+    			font-size: 5px;
+    			border: 0;
+    			outline: 0;
+				font-family: 'Gugi', cursive;
+			}
+			
+			#save:hover{
+				cursor : pointer
+			}
+        </style>
+    </head>
+
+    <body>
+		<button id="save" onclick="allSave()">저장</button>
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        <div id="calendar-container">
+			<div id="calendar"></div>
+        </div>
+    </body>
+</html>

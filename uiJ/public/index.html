@@ -1,0 +1,230 @@
+<!-- <!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<html lang="ko" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <!--<title> Responsive Sidebar Menu  | CodingLab </title>-->
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <!-- Boxicons CDN Link -->
+    <script src="https://kit.fontawesome.com/29ee0bc57e.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jquery-contextmenu -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.css" integrity="sha512-EF5k2tHv4ShZB7zESroCVlbLaZq2n8t1i8mr32tgX0cyoHc3GfxuP7IoT8w/pD+vyoq7ye//qkFEqQao7Ofrag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.contextMenu.js" integrity="sha512-2ABKLSEpFs5+UK1Ol+CgAVuqwBCHBA0Im0w4oRCflK/n8PUVbSv5IY7WrKIxMynss9EKLVOn1HZ8U/H2ckimWg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-contextmenu/2.9.2/jquery.ui.position.js" integrity="sha512-vBR2rismjmjzdH54bB2Gx+xSe/17U0iHpJ1gkyucuqlTeq+Q8zwL8aJDIfhQtnWMVbEKMzF00pmFjc9IPjzR7w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToasTooL</title>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="logo-details">
+            <i class='bx bx-menu' id="btn"></i>
+        </div>
+        <ul class="nav-list">
+            <li>
+                <div class="project">
+                    <div id="tabwrap1">
+                        <p class="title">프로젝트</p>
+                        <button type="button" class="btm_image" id="img_btn"><img src="./images/editProject.png"></button>
+                        <button class="btn" style="width: 90px">생성</button>
+                        <button class="btn" style ="width: 90px; margin-left:20px">참가</button>
+                        <ul id="myUL3"></ul>
+                    </div>
+                </div>
+                <a href="#">
+                    <span class="tooltip">
+                        <i class='projectbtn'>
+                            <img src="./images/project.png">
+                        </i>
+                        <span class="tooltip-text">프로젝트</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <div class="todo">
+                    <div id="tabwrap3">
+                        <p class="title">할일</p>
+                        <button class="menu1 on">프로젝트</button>
+                        <button class="menu2">개인</button>
+                        <div class="board1" -ms-overflow-style: none;>
+                            <header>
+                                <input type="text" id="myInput1" placeholder="프로젝트에서 해야 할 일..." autocomplete="off" />
+                                <span class="addBtn1" id="add_button1">+</span>
+                            </header>
+                            <ul id="myUL1"></ul>
+                            <script script src="javascripts/script.js"></script>
+                        </div>
+                        <div class="board2" -ms-overflow-style: none;>
+                            <header>
+                                <input type="text" id="myInput2" placeholder="개인적으로 해야 할 일..." autocomplete="off" />
+                                <span class="addBtn2" id="add_button2">+</span>
+                            </header>
+                            <ul id="myUL2"></ul>
+                            <script script src="javascripts/scriptt.js"></script>
+                        </div>
+                    </div>
+                </div>
+                <a href="#">
+                    <span class="tooltip">
+                        <i class='todobtn'>
+                            <img src="./images/todo.png">
+                        </i>
+                        <span class="tooltip-text">할일</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <div class="calendar">
+                    <div id="tabwrap4">
+                        <p class="title">캘린더</p>
+						<iframe src="/calendar/fullcalendar/index.html" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+                <a href="#">
+                    <span class="tooltip">
+                        <i class='calendarbtn'>
+                            <img src="./images/calendar.png">
+                        </i>
+                        <span class="tooltip-text">캘린더</span>
+                    </span>
+                </a>
+            </li>
+            
+            <!-- 첫 번째 Modal -->
+            <div class="modal">
+                <!-- 첫 번째 Modal의 내용 -->
+                <div class="modal-content">
+                    <span class="kick">&times;</span>
+                    <p>프로젝트 생성</p>
+                    <input type="text" id="projectname" placeholder="생성할 프로젝트 이름" autocomplete="off">
+					<input type="password" id="projectpw" placeholder="생성할 프로젝트의 비밀번호" autocomplete="off">
+                    <button class="pnew">만들기 !</button>
+                </div>
+            </div>
+			<!-- 두 번째 Modal -->
+            <div class="modal">
+                <!-- 두 번째 Modal의 내용 -->
+                <div class="modal-content">
+                    <span class="kick">&times;</span>
+                    <p>프로젝트 참가</p>
+                    <input type="text" id="projectname" placeholder="참가할 프로젝트 이름" autocomplete="off">
+                    <input type="text" id="projectpw" placeholder="참가할 프로젝트의 비밀번호" autocomplete="off">
+                    <button class="padd">참가하기 !</button>
+                </div>
+            </div>
+			
+            <!-- 세 번째 Modal -->
+            <div class="modal">
+                <!-- 세 번째 Modal의 내용 -->
+                <div class="modal-content">
+                    <span class="kick">&times;</span>
+                    <p>친구 추가</p>
+                    <input type="text" id = "friendname" placeholder="추가할 친구의 ID" autocapitalize="off">
+                    <button class="fadd">추가하기 !</button>
+                </div>
+            </div>
+        </ul>
+    </div>
+	
+	<div class="black_bg"></div>
+	<div class="modal_wrap">
+		<div class="modal_close"><a href="#"></a></div>
+		<div>
+			<div class="slidebox">
+				<input type="radio" name="slide" id="slide01" checked>
+				<input type="radio" name="slide" id="slide02">
+
+				<ul class="slidelist">
+					<li class="slideitem">
+						<div class="backG">
+							<p class="Mtitle">프로젝트 수정</p>
+							<input type="text" id="newprojectname" placeholder="프로젝트의 새로운 이름" autocomplete="off">
+							<input type="text" id="newprojectpw" placeholder="변경할 팀장의 ID" autocomplete="off" style="top:30%">
+							<input type="text" id="newprojectleader" placeholder="프로젝트의 새로운 비밀번호" autocomplete="off" style="top:40%">
+							<div class="separate"></div>
+							<input type="text" id="exitprojectname" placeholder="확인을 위한 기존 프로젝트의 이름" autocomplete="off" style="top:60%">
+							<select id="select2" style="top:60%"></select>
+							<input type="password" id="exitprojectpw" placeholder="확인을 위한 기존 프로젝트의 비밀번호" autocomplete="off" style="top:70%">
+							<button class="pmodify" id="pmodify">수정하기</button>
+						</div>
+					</li>
+					<li class="slideitem">
+						<div class="backG">
+							<p class="Mtitle">프로젝트 삭제</p>
+							<input type="text" id="deleteprojectname" placeholder="삭제할 프로젝트 이름" autocomplete="off" style="top:40%">
+							<input type="password" id="deleteprojectpw" placeholder="삭제할 프로젝트 비밀번호" autocomplete="off" style="top:50%">
+							<button class="pdel">삭제하기</button>
+						</div>
+					</li>
+
+				</ul>
+				<div class="slide-control">
+					<div class="control01">
+						<label for="slide02" class="prev">
+							<div class="arr">
+								<span></span>
+							</div>
+						</label>
+						<label for="slide02" class="next"></label>
+					</div>
+					<div class="control02">
+						<label for="slide01" class="prev"></label>
+						<label for="slide01" class="next"></label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+    <section class="home-section">
+        <div class="gamezone">
+        	<iframe src="/game/ToasTooL/index.html"></iframe>
+        </div>
+    </section>
+    
+    
+    <script src="https://cdn.socket.io/4.4.0/socket.io.min.js" integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj" crossorigin="anonymous"></script>
+    <script script src="javascripts/realscript.js"></script>
+	<!--<script script src="javascripts/friendbuttonscript.js"></script>-->
+    <script script src="javascripts/buttonscript.js"></script>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script>
+        
+        //파라미터로 쿼리를 받아서 그 쿼리를 post로 데이터와 함께 보냄
+        //table은 어디 테이블로 보낼 건지
+        //data는 VALUES() 안에 들어갈 내용으로, string형식에 ,로 구분해서 보낼 것
+        //(참고 routes/insert.js에 쿼리 형식)
+        function insert(query) {
+            axios.post('https://toastoolui.run.goorm.io/insert', {
+                query : query
+                 }).then((res)=>{
+                    console.log(res);
+                }).catch(error=>{
+                    console.log(error);
+                });
+        }
+		
+		window.onload = function () {
+
+			function onClick() {
+				document.querySelector('.modal_wrap').style.display = 'block';
+				document.querySelector('.black_bg').style.display = 'block';
+			}
+			function offClick() {
+				document.querySelector('.modal_wrap').style.display = 'none';
+				document.querySelector('.black_bg').style.display = 'none';
+			}
+
+			document.getElementById('img_btn').addEventListener('click', onClick);
+			
+			document.querySelector('.modal_close').addEventListener('click', offClick);
+
+		};
+	</script>
+</body>
+
+</html>

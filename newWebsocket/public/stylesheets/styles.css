@@ -1,0 +1,170 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  font-family: Helvetica, Arial, sans-serif;
+
+}
+
+.folderwrap{
+	width:15%;
+	height:93%;
+	background-color:#efebe9;
+}
+
+.container {
+  display: flex;
+}
+
+.editor {
+  margin: 15px;
+  flex-grow: 1;
+    border-color:#7d4426;
+    
+}
+
+.ql-toolbar.ql-snow{
+    width:84%;
+    position:absolute;
+    left:15.5%;
+	top: 8%;
+}
+
+#editor{
+    position:absolute;
+    width: 84%;
+    height:45%;
+    top:13%;
+    left:15.5%;
+    font-size:15px;
+}
+
+#output{
+    position : absolute;
+    left:15.5%;
+    width:84%;
+    height:40%;
+    top:58.5%;
+    vertical-align: top;
+    padding-top:1%;
+    padding-left:1%;
+    background-color:#efebe9;
+    border:none;
+    font-family:border;
+    font-size: 15px;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+#ajaxsend, #save, #plus{
+	width:70px;
+	height: 35px;
+	color:#fff;
+	background:  #795548;
+	font-size: 14px;
+	border:none;
+	border-radius: 20px;
+	box-shadow: 0 4px 4px rgba(89,87,87,0.3);
+	transition:0.3s;
+	position: absolute;
+	left:18%;
+	top:4%;
+	transform: translate(-50%,-50%);
+}
+
+#save{
+	left:13%;
+}
+
+#plus{
+	left:9%;
+	width:35px;
+}
+
+#ajaxsend:focus, #save:focus, #plus:focus{
+	outline:0;
+}
+
+#ajaxsend:hover, #save:hover, #plus:hover{
+	background: #5d4037;
+	cursor: pointer;
+	box-shadow: 0 2px 4px rgba(89,87,87,0.6);
+}
+
+.modal{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items:center;
+}
+
+.modal .bg{
+	width:100%;
+	height:100%;
+	background-color: rgba(0,0,0,0.6);
+}
+
+.modalBox{
+	position:absolute;
+	background-color:#fff;
+	width: 700px;
+	height: 200px;
+	left :28%;
+	top:15%;
+}
+
+.modalBox button{
+	position: absolute;
+	width: 20px;
+	top:3%;
+	left:95%;
+}
+
+.modalBox b{
+	position: absolute;
+	margin: 20px;
+	top: 3px;
+}
+
+.modalBox p{
+	position: absolute;
+	top: 30%;
+	left : 5%;
+}
+
+#filename{
+	position: absolute;
+	top: 33%;
+	left : 30%;
+	width: 38%;
+    height: 20%;
+    outline: none;
+	font-size: 12px;
+}
+
+#back{
+	position: absolute;
+	width: 50px;
+	top: 80%;
+	left : 30%;
+}
+
+#create{
+	position: absolute;
+	width: 50px;
+	top: 80%;
+	left : 50%;
+}
+
+.hidden{
+	display: none;
+}
