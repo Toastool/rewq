@@ -21,3 +21,5 @@ var connection = mysql.createConnection({
 
 # select로 가져올 경우
 # 뒤에 (error,rows,fields)에 저장이 되고, 해당 내용(rows, fields)을 var로 저장해서 해당 스코프에서 사용하면 된다.
+
+와.. 이게 모임..? 이게..뭐누?
